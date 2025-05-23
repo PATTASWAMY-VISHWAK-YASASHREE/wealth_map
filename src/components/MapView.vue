@@ -26,32 +26,23 @@ watch(name, (newValue) => {
     addressCard.value = false
   }
 })
-const initDraggablePanel = () => {
-  if (window.innerWidth <= 768) {
-    const resultsPanel = document.querySelector('.mobile-results');
-    const dragHandle = document.querySelector('.drag-handle');
-    let startY, startHeight, isDragging = false;
-    
-    dragHandle.addEventListener('touchstart', (e) => {
-      const touch = e.touches[0];
-      startY = touch.clientY;
-      startHeight = parseInt(getComputedStyle(resultsPanel).height);
-      isDragging = true;
-    });
-    
-    document.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      const touch = e.touches[0];
-      const deltaY = touch.clientY - startY;
-      const newHeight = Math.max(100, Math.min(window.innerHeight - 100, startHeight - deltaY));
-      resultsPanel.style.height = `${newHeight}px`;
-    });
-    
-    document.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-  }
-};
+// Add these to your script setup section
+const isExpanded = ref(false)
+
+const expandPanel = () => {
+  const resultsPanel = document.querySelector('.mobile-results')
+  resultsPanel.style.height = '70vh'
+  isExpanded.value = true
+}
+
+const collapsePanel = () => {
+  const resultsPanel = document.querySelector('.mobile-results')
+  resultsPanel.style.height = '30vh'
+  isExpanded.value = false
+}
+
+// Remove or comment out the initDraggablePanel function since we're not using drag anymore
+
 const initMap = () => {
   // Initialize map with US center view
   map = L.map('map', {
@@ -1770,13 +1761,22 @@ onMounted(() => {
   </div>
   
   <!-- Separate results panel for mobile -->
-  <div class="results-panel mobile-results">
-    <div class="drag-handle"></div>
-    <div id="loadingelemnet" style="display:none; color: black;">
-      <p>Loading.....</p>
-    </div>
-    <div id="searchresults"></div>
+  <!-- Replace the drag handle with arrow buttons -->
+<div class="results-panel mobile-results" :class="{ 'expanded': isExpanded }">
+  <div class="panel-controls">
+    <button v-if="!isExpanded" class="arrow-button up-arrow" @click="expandPanel">
+      <i class="pi pi-chevron-up"></i>
+    </button>
+    <button v-else class="arrow-button down-arrow" @click="collapsePanel">
+      <i class="pi pi-chevron-down"></i>
+    </button>
   </div>
+  <div id="loadingelemnet" style="display:none; color: black;">
+    <p>Loading.....</p>
+  </div>
+  <div id="searchresults"></div>
+</div>
+
   
   <!-- Desktop left panel (hidden on mobile) -->
   <div class="left-panel desktop-only">
@@ -1803,6 +1803,7 @@ onMounted(() => {
     </div>
     
     <div class="results-panel">
+      
       <div id="searchresults_desktop"></div>
     </div>
   </div>
@@ -2110,7 +2111,7 @@ option{
   border-radius: 8px;
   padding: 10px;
   position: relative;
-  color: black;
+  
   max-height: calc(100vh - 120px); /* Set a max height */
 
   /* Hide scrollbar for WebKit browsers */
@@ -2158,7 +2159,7 @@ option{
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
-    color:black;
+    
   }
   
   .results-panel::before {
@@ -2172,7 +2173,7 @@ option{
     background-color: #ccc;
     border-radius: 10px;
     cursor: grab;
-    color:black;
+   
   }
 }
 /* Property card styles */
@@ -2368,7 +2369,7 @@ option{
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 94%;
     height: 30vh;
     background-color: white;
     border-radius: 20px 20px 0 0;
@@ -2397,6 +2398,39 @@ option{
     padding-top: 60px;
     padding-bottom: 30vh;
   }
+}
+/* Add these styles */
+.panel-controls {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.arrow-button {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1A73E8;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.arrow-button i {
+  color: white;
+  font-size: 18px;
+}
+
+.mobile-results {
+  transition: height 0.3s ease;
+}
+
+.mobile-results.expanded {
+  height: 70vh !important;
 }
 
 </style>

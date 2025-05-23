@@ -10,7 +10,7 @@
    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTILstzE4n4jxRaa2LcTb5Uf_JKLVtXIZjL3w&s" alt="logo" class="logo" style=" margin-bottom: 2rem;" />
     </div>
       
-  <a href="http://localhost:5173/">
+  <a href="https://wealthmap.netlify.app/">
    <i class="pi pi-globe" style="font-size: 1.5rem"></i>
    Map
 </a>
@@ -32,20 +32,20 @@
 
 
  <div class="bottom">
-    <div>
-         <i class="pi pi-globe" style="font-size: 1.8rem"></i>
+    <div href="https://wealthmap.netlify.app/">
+         <i class="pi pi-globe" style="font-size: 1.2rem"></i>
           <a>Map</a>
     </div>
      <div>
-          <i class="pi pi-user" style="font-size: 1.8rem"></i>
+          <i class="pi pi-user" style="font-size: 1.2rem"></i>
         <a>Owner</a>
     </div>
      <div>
-         <i class="pi pi-bookmark" style="font-size: 1.8rem"></i>
+         <i class="pi pi-bookmark" style="font-size: 1.2rem"></i>
          <a>Files</a>
     </div>
      <div>
-        <i class="pi pi-discord" style="font-size: 1.8rem"></i>
+        <i class="pi pi-discord" style="font-size: 1.2rem"></i>
          <a>Connect</a>
     </div>
     
@@ -150,7 +150,7 @@
    
 .bottom{
 width: 100%;
-height: 76px;
+height: 68px;
 position:fixed;
 bottom: 0;
 left: 0;
@@ -159,9 +159,9 @@ right: 0;
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
-padding-top: 1.2rem;
+padding-top: 0.9rem;
 }
-.bottom a{
+.bottom div a{
 display: block;
 color: white;
 padding: 10px 15px;
@@ -170,11 +170,13 @@ margin-bottom: 10px;
 border-radius: 5px;
 transition: background-color 0.3s ease;
 cursor: pointer;
+font-size:12px;
 }
-.bottom a:hover{
-background-color: #333;
-color: white;
+.bottom div :hover {
+   background-color: #333;
+   color: white;
 }
+
 .sidebar{
     display: none;
 }
