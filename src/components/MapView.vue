@@ -54,7 +54,7 @@ const initMap = () => {
 
   // Add zoom control to the bottom-right
   L.control.zoom({
-    position: 'bottomright' // Change position to bottom-right
+    position: 'topright' // Change position to bottom-right
   }).addTo(map)
 
   // Normal tile layer
