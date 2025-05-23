@@ -2054,13 +2054,7 @@ option{
   color: white;
 }
 
-.results-panel {
-  flex: 1;
-  overflow-y: auto;
-  background-color: white;
-  border-radius: 8px;
-  padding: 10px;
-}
+
 
 #searchresults {
   overflow-y: auto;
@@ -2108,12 +2102,25 @@ option{
 }
 
 .results-panel {
-  flex: 1;
-  overflow-y: auto;
+   flex: 1;
+  overflow-y: auto; /* This is already here but needs to be enforced */
   background-color: white;
   border-radius: 8px;
   padding: 10px;
   position: relative;
+  color: black;
+  max-height: calc(100vh - 120px); /* Set a max height */
+
+  /* Hide scrollbar for WebKit browsers */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+  
+  /* Hide scrollbar for IE and Edge */
+  -ms-overflow-style: none;
 }
 
 /* Mobile styles */
@@ -2149,6 +2156,7 @@ option{
     border-radius: 20px 20px 0 0;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
+    color:black;
   }
   
   .results-panel::before {
@@ -2162,6 +2170,7 @@ option{
     background-color: #ccc;
     border-radius: 10px;
     cursor: grab;
+    color:black;
   }
 }
 /* Property card styles */

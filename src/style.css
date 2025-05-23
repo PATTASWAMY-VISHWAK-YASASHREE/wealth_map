@@ -78,3 +78,132 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.property-card {
+  background-color:rgb(107, 114, 128);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.property-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.property-card h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #202124;
+}
+
+.property-card p {
+  margin: 0 0 8px 0;
+  color: #5f6368;
+  font-size: 14px;
+}
+
+.property-tag {
+  background-color: #E8F0FE;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  color: #1A73E8;
+  font-size: 12px;
+}
+
+.property-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.label {
+  color: #5f6368;
+  margin-right: 4px;
+}
+
+/* Property detail view */
+.property-detail {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #DADCE0;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #1A73E8;
+  cursor: pointer;
+  margin-right: 12px;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.back-button:hover {
+  background-color: #f1f3f4;
+}
+
+.detail-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.detail-content {
+  padding: 16px;
+}
+
+.detail-section {
+  margin: 16px 0;
+}
+
+.detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.detail-item {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.detail-item i {
+  margin-right: 8px;
+  color: #5f6368;
+  margin-top: 2px;
+}
+
+.detail-item .label {
+  display: block;
+  font-size: 12px;
+}
+
+.detail-item .value {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 16px;
+  border-top: 1px solid #DADCE0;
+}
