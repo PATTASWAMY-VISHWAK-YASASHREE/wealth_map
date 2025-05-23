@@ -17,6 +17,7 @@ const results = ref([]) // Reactive array to store results
 const name = ref('') // Reactive variable for address input
 let autocomplete = null // For Google Places Autocomplete
 let addressCard = ref(false) // To control address suggestions visibility
+const showMobileDetail = ref(false)
 
 // Watch for changes in the search input to show/hide address card
 watch(name, (newValue) => {
@@ -31,7 +32,7 @@ const isExpanded = ref(false)
 
 const expandPanel = () => {
   const resultsPanel = document.querySelector('.mobile-results')
-  resultsPanel.style.height = '70vh'
+  resultsPanel.style.height = '100vh'
   isExpanded.value = true
 }
 
@@ -1489,7 +1490,7 @@ const showPropertyDetail = (property) => {
         <button class="back-button" onclick="showPropertyList()">
           <i class="pi pi-arrow-left"></i>
         </button>
-        <h2>${shortAddress}</h2>
+        <h2 style="color:black;">${shortAddress}</h2>
       </div>
       
       <div class="detail-image">
@@ -1497,8 +1498,8 @@ const showPropertyDetail = (property) => {
       </div>
       
       <div class="detail-content">
-        <h3>${cityStateZip}</h3>
-        <div class="property-tag">${propertyClass}</div>
+        <h3 style="color:black;">${cityStateZip}</h3>
+        <div class="property-tag" style="color:black;">${propertyClass}</div>
         
         <div class="detail-section">
           <div class="detail-row">
@@ -1506,14 +1507,14 @@ const showPropertyDetail = (property) => {
               <i class="pi pi-home"></i>
               <div>
                 <span class="label">Property Type</span>
-                <span class="value">${propertyType}</span>
+                <span class="value" style="color:black;">${propertyType}</span>
               </div>
             </div>
             <div class="detail-item">
               <i class="pi pi-calendar"></i>
               <div>
                 <span class="label">Year Built</span>
-                <span class="value">${yearBuilt}</span>
+                <span class="value" style="color:black;">${yearBuilt}</span>
               </div>
             </div>
           </div>
@@ -1523,14 +1524,14 @@ const showPropertyDetail = (property) => {
               <i class="pi pi-th-large"></i>
               <div>
                 <span class="label">Lot Size</span>
-                <span class="value">${lotSize}</span>
+                <span class="value" style="color:black;">${lotSize}</span>
               </div>
             </div>
             <div class="detail-item">
               <i class="pi pi-building"></i>
               <div>
                 <span class="label">Building Size</span>
-                <span class="value">${sqft}</span>
+                <span class="value" style="color:black;">${sqft}</span>
               </div>
             </div>
           </div>
@@ -1540,14 +1541,14 @@ const showPropertyDetail = (property) => {
               <i class="pi pi-money-bill"></i>
               <div>
                 <span class="label">Market Value</span>
-                <span class="value">${marketValue}</span>
+                <span class="value" style="color:black;">${marketValue}</span>
               </div>
             </div>
             <div class="detail-item">
               <i class="pi pi-chart-bar"></i>
               <div>
                 <span class="label">Assessed Value</span>
-                <span class="value">${assessedValue}</span>
+                <span class="value" style="color:black;">${assessedValue}</span>
               </div>
             </div>
           </div>
@@ -1556,8 +1557,8 @@ const showPropertyDetail = (property) => {
             <div class="detail-item">
               <i class="pi pi-dollar"></i>
               <div>
-                <span class="label">Tax (${taxYear})</span>
-                <span class="value">${taxAmount}</span>
+                <span class="label" style="color:black;">Tax (${taxYear})</span>
+                <span class="value" style="color:black;">${taxAmount}</span>
               </div>
             </div>
           </div>
@@ -1578,12 +1579,32 @@ const showPropertyDetail = (property) => {
   `
   
   // Replace content with detailed view
-  const maincontainer = document.getElementById('searchresults')
-  const desktopcontainer=document.getElementById('searchresults_desktop')
-  maincontainer.innerHTML = detailHTML
-  desktopcontainer.innerHTML=detailHTML
+ 
+  if (window.innerWidth <= 768) {
+    // Show mobile full screen view
+    showMobileDetail.value = true
+     // Extract HTML creation to separate function
+      nextTick(() => {
+      // Wait for the element to be created
+      document.getElementById('mobile-detail-content').innerHTML = detailHTML
+    })
+    
+  } else {
+    // Desktop view remains the same
+    
+    const maincontainer = document.getElementById('searchresults')
+    const desktopcontainer = document.getElementById('searchresults_desktop')
+    maincontainer.innerHTML = detailHTML
+    desktopcontainer.innerHTML = detailHTML
+  }
 }
-
+// Add close function
+const closeMobileDetail = () => {
+  showMobileDetail.value = false
+  if (window.lastResponse) {
+    displayPropertyList(window.lastResponse)
+  }
+}
 // Helper function to create property list content
 const createPropertyListContent = (response) => {
   if (!response.property || response.property.length === 0) {
@@ -1732,7 +1753,7 @@ onMounted(() => {
       setupInputEvents()
       
     }
-    initDraggablePanel();
+    
   })
 })
 </script>
@@ -1741,6 +1762,16 @@ onMounted(() => {
   <sidebar />
   <div class="map-container">
     <div id="map"></div>
+  </div>
+  
+  <div v-if="showMobileDetail" class="mobile-detail-view">
+    <div class="mobile-detail-header">
+      <button class="back-button" @click="closeMobileDetail">
+        <i class="pi pi-arrow-left"></i>
+      </button>
+      <h2>Property Details</h2>
+    </div>
+    <div id="mobile-detail-content"></div>
   </div>
   
   <!-- Separate search filter row for mobile -->
@@ -1754,6 +1785,12 @@ onMounted(() => {
       <option value="Commercial">Commercial</option>
       <option value="Mixed Use">Mixed Use</option>
     </select>
+    <select class="filter_select">
+        <option value="">Price Range</option>
+        <option value="0-250000">$0 - $250k</option>
+        <option value="250000-500000">$250k - $500k</option>
+        <option value="500000+">$500k+</option>
+      </select>
     
     <button class="save_search_btn">
       <i class="pi pi-save"></i> Save
@@ -2433,4 +2470,53 @@ option{
   height: 70vh !important;
 }
 
+/* Add these styles */
+.mobile-detail-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.mobile-detail-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.mobile-detail-header .back-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.mobile-detail-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+#mobile-detail-content {
+  padding: 16px;
+}
+
+/* Hide scrollbar */
+.mobile-detail-view {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mobile-detail-view::-webkit-scrollbar {
+  display: none;
+}
 </style>
