@@ -1588,7 +1588,9 @@ const showPropertyDetail = (property) => {
   
   // Replace content with detailed view
   const maincontainer = document.getElementById('searchresults')
+  const desktopcontainer=document.getElementById('searchresults_desktop')
   maincontainer.innerHTML = detailHTML
+  desktopcontainer.innerHTML=detailHTML
 }
 
 // Helper function to create property list content
