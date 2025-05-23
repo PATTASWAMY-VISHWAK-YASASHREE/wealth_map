@@ -207,3 +207,9 @@ button:focus-visible {
   padding-top: 16px;
   border-top: 1px solid #DADCE0;
 }
+
+@media screen and (max-width: 768px){
+  .back-button {
+    display:none;
+  }
+}

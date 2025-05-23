@@ -1766,10 +1766,10 @@ onMounted(() => {
   
   <div v-if="showMobileDetail" class="mobile-detail-view">
     <div class="mobile-detail-header">
-      <button class="back-button" @click="closeMobileDetail">
+      <button class="back-button_1" @click="closeMobileDetail">
         <i class="pi pi-arrow-left"></i>
       </button>
-      <h2>Property Details</h2>
+      
     </div>
     <div id="mobile-detail-content"></div>
   </div>
@@ -2183,7 +2183,7 @@ option{
   
   .filter_select, .search_address {
     min-width: 120px;
-    margin-right: 8px;
+    margin-right: 1rem;
   }
   
   .results-panel {
@@ -2396,7 +2396,7 @@ option{
     width: 100%;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 10px;
+   
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     flex-wrap: wrap;
   }
@@ -2493,7 +2493,7 @@ option{
   z-index: 1;
 }
 
-.mobile-detail-header .back-button {
+.mobile-detail-header .back-button_1 {
   background: none;
   border: none;
   padding: 8px;
