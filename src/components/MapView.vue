@@ -1863,7 +1863,7 @@ cursor: pointer;
   bottom: 0;
   z-index: 0;
   display: flex; /* Use flexbox to align the results container and map side by side */
-  
+  padding-top:70px;
 }
 
 .results-container {
@@ -2395,8 +2395,8 @@ option{
   /* Make map visible between search and results */
   .map-container {
     z-index: 1;
-    padding-top: 60px;
-    padding-bottom: 30vh;
+    padding-top: 116px;
+    
   }
 }
 /* Add these styles */
