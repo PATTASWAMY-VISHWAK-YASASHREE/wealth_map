@@ -14,15 +14,15 @@
    <i class="pi pi-globe" style="font-size: 1.5rem"></i>
    Map
 </a>
-    <a>
+    <router-link to="/owners">
     <i class="pi pi-user" style="font-size: 1.5rem"></i>
-        Owner</a>
-        <a>
+        Owner</router-link>
+        <router-link to="/files">
     <i class="pi pi-bookmark" style="font-size: 1.5rem"></i>
-        Files</a>
-    <a>
+        Files</router-link>
+    <router-link to="/connect">
     <i class="pi pi-discord" style="font-size: 1.5rem"></i>
-        Connect</a>
+        Connect</router-link>
     
 </div>
  <div class="logo-container">
@@ -38,15 +38,15 @@
     </div>
      <div>
           <i class="pi pi-user" style="font-size: 1.2rem"></i>
-        <a>Owner</a>
+        <router-link to="/owners">Owner</router-link>
     </div>
      <div>
          <i class="pi pi-bookmark" style="font-size: 1.2rem"></i>
-         <a>Files</a>
+         <router-link to="/files">Files</router-link>
     </div>
      <div>
         <i class="pi pi-discord" style="font-size: 1.2rem"></i>
-         <a>Connect</a>
+         <router-link to="/connect">Connect</router-link>
     </div>
     
     
@@ -109,7 +109,7 @@
 .search[placeholder="Search"]{
     color:white;
 }
-.sidebar a{
+.sidebar a, .sidebar router-link {
     display: block;
     color: white;
     padding: 10px 15px;
@@ -120,7 +120,7 @@
     cursor: pointer;
     padding:12px 12px 12px 12px;
 }
-.sidebar a:hover{
+.sidebar a:hover, .sidebar router-link:hover{
     background-color: #333;
     color: white;
 }
@@ -161,7 +161,7 @@ flex-direction: row;
 justify-content: space-evenly;
 padding-top: 0.9rem;
 }
-.bottom div a{
+.bottom div a, .bottom div router-link {
 display: block;
 color: white;
 padding: 10px 15px;
@@ -172,7 +172,7 @@ transition: background-color 0.3s ease;
 cursor: pointer;
 font-size:12px;
 }
-.bottom div :hover {
+.bottom div a:hover, .bottom div router-link:hover {
    background-color: #333;
    color: white;
 }
