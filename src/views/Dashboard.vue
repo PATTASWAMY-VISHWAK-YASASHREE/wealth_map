@@ -21,22 +21,98 @@
       </div>
 
       <!-- Owners Summary Cards -->
-      <div v-if="owners.length" class="flex gap-6 flex-wrap mb-4">
-        <div class="bg-white rounded-xl shadow border p-4 flex flex-col items-center min-w-[140px]">
-          <div class="text-base mb-1 text-slate-500">Total Owners</div>
-          <div class="text-xl font-bold text-blue-700">{{ summary.totalOwners }}</div>
+      <div v-if="owners.length" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 group">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12a1 1 0 01-1-1v-3a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1 1v1a1 1 0 01-1 1H9z" />
+                    <path fill-rule="evenodd" d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9zM4 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 000-2H4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-600 mb-1">Total Owners</p>
+                  <p class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{{ summary.totalOwners }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-green-500">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="bg-white rounded-xl shadow border p-4 flex flex-col items-center min-w-[140px]">
-          <div class="text-base mb-1 text-slate-500">Total Properties</div>
-          <div class="text-xl font-bold text-green-700">{{ summary.totalProperties }}</div>
+
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 group">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-600 mb-1">Total Properties</p>
+                  <p class="text-2xl font-bold text-gray-900 group-hover:text-green-600 transition-colors">{{ summary.totalProperties }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-green-500">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="bg-white rounded-xl shadow border p-4 flex flex-col items-center min-w-[140px]">
-          <div class="text-base mb-1 text-slate-500">Avg. Latitude</div>
-          <div class="text-lg font-mono text-gray-800">{{ summary.avgLatitude || "--" }}</div>
+
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 group">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-600 mb-1">Avg. Latitude</p>
+                  <p class="text-xl font-mono text-gray-900 group-hover:text-purple-600 transition-colors">{{ summary.avgLatitude || "--" }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-purple-500">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
         </div>
-        <div class="bg-white rounded-xl shadow border p-4 flex flex-col items-center min-w-[140px]">
-          <div class="text-base mb-1 text-slate-500">Avg. Longitude</div>
-          <div class="text-lg font-mono text-gray-800">{{ summary.avgLongitude || "--" }}</div>
+
+        <div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 group">
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-600 mb-1">Avg. Longitude</p>
+                  <p class="text-xl font-mono text-gray-900 group-hover:text-orange-600 transition-colors">{{ summary.avgLongitude || "--" }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-orange-500">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -46,21 +122,88 @@
       <div v-else-if="errorLoadingOwners" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded my-4">
         <strong class="font-bold">Error: </strong> <span>{{ errorLoadingOwners }}</span>
       </div>
-      <div v-else-if="owners.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-6">
+      <div v-else-if="owners.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 my-6">
         <div
           v-for="owner in owners"
           :key="owner.id"
-          class="bg-white rounded-xl shadow-md transition hover:scale-105 border-2 border-slate-100 px-6 py-6 flex flex-col space-y-2 items-start min-h-[190px]"
+          class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden cursor-pointer transform hover:-translate-y-1"
         >
-          <div class="w-full flex justify-between mb-2">
-            <h3 class="text-xl font-semibold text-gray-800 truncate">{{ owner.name }}</h3>
-            <span class="text-xs text-gray-400">{{ owner.id }}</span>
+          <!-- Card Header with Gradient Background -->
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 pb-4">
+            <div class="flex items-center space-x-4">
+              <div class="relative">
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  {{ owner.name.charAt(0).toUpperCase() }}
+                </div>
+                <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors truncate">
+                  {{ owner.name.replace(' (from Map)', '') }}
+                </h3>
+                <p class="text-sm text-gray-600 font-medium">Property Owner</p>
+                <div class="flex items-center mt-1">
+                  <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span class="text-xs text-gray-500">Online</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="text-sm text-gray-700">🏠 <strong>Property:</strong> <span class="truncate">{{ owner.property }}</span></div>
-          <div class="text-sm text-gray-700">📍 <strong>Location:</strong> Lat: <span class="font-mono">{{ owner.latitude.toFixed(4) }}</span>,
-             Long: <span class="font-mono">{{ owner.longitude.toFixed(4) }}</span></div>
-          <div class="flex-1 flex items-end w-full mt-2">
-            <button class="ml-auto text-blue-500 hover:underline text-sm">Details</button>
+
+          <!-- Card Body -->
+          <div class="p-6 pt-4 space-y-4">
+            <!-- Property Address -->
+            <div class="flex items-start space-x-3">
+              <div class="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-gray-700 mb-1">Property Address</p>
+                <p class="text-sm text-gray-600 break-words">{{ owner.property }}</p>
+              </div>
+            </div>
+
+            <!-- Coordinates -->
+            <div class="flex items-start space-x-3">
+              <div class="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"></path>
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-gray-700 mb-1">Coordinates</p>
+                <p class="text-xs text-gray-600 font-mono bg-gray-50 px-2 py-1 rounded-md inline-block">
+                  {{ owner.latitude.toFixed(4) }}, {{ owner.longitude.toFixed(4) }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Property Stats -->
+            <div class="bg-gray-50 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Property Value</span>
+                <span class="text-sm font-bold text-green-600">$1.2M</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Map Status</span>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span class="w-1.5 h-1.5 bg-green-400 rounded-full mr-1"></span>
+                  Active
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-6 pb-6">
+            <button class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 flex items-center justify-center space-x-2">
+              <span>View Details</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

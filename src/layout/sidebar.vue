@@ -1,4 +1,9 @@
 <script setup>
+import { ref } from 'vue'
+
+// Configuration for map URL - can be toggled between local and deployed
+const mapUrl = ref('http://localhost:5173/') // Change this to switch between local and netlify
+// const mapUrl = ref('https://wealthmap.netlify.app/') // Uncomment this line and comment above for netlify
 
 </script>
 
@@ -9,8 +14,7 @@
     <div href="http://localhost:5173/">
    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTILstzE4n4jxRaa2LcTb5Uf_JKLVtXIZjL3w&s" alt="logo" class="logo" style=" margin-bottom: 2rem;" />
     </div>
-      
-  <a href="https://wealthmap.netlify.app/">
+        <a :href="mapUrl">
    <i class="pi pi-globe" style="font-size: 1.5rem"></i>
    Map
 </a>
@@ -31,10 +35,9 @@
  </div>
 
 
- <div class="bottom">
-    <div href="https://wealthmap.netlify.app/">
+ <div class="bottom">    <div>
          <i class="pi pi-globe" style="font-size: 1.2rem"></i>
-          <a>Map</a>
+          <a :href="mapUrl">Map</a>
     </div>
      <div>
           <i class="pi pi-user" style="font-size: 1.2rem"></i>
